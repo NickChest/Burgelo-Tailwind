@@ -1,0 +1,407 @@
+@import "tailwindcss";
+
+/* resets and styles */
+@theme {
+  --color-primary: #ffc139;
+  --color-mid: #00000067;
+  --color-midLight: #f7f6f9;
+  --color-light: #fff;
+  --color-dark: #2b2b2b;
+  --shadow-header: 0 4px 8px -4px #00000025;
+  --spacing-calc: calc(110vh - 103px);
+  --font-primary: Oswald, "sans-serif";
+  --font-default:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --grid-promo-columns: 50vh 100vh 100vh;
+  --transform-first-x: translate(0, 8px) rotate(225deg);
+  --transform-last-x: translate(0, -8px) rotate(-225deg);
+  /* --transition-simple: duration-500 ease-in-out; */
+  /* --transition-qck: duration-[0.25s] ease-in-out; */
+}
+
+/* resets */
+* {
+  @apply box-border m-0 p-0;
+}
+ul {
+  @apply list-none;
+}
+li {
+  @apply list-none;
+}
+a {
+  @apply text-dark no-underline;
+}
+
+/* base */
+html {
+  @apply font-primary;
+}
+body {
+  @apply h-1250 text-[16px] leading-[1.4] text-dark p-0 scroll-smooth scroll-pt-25;
+}
+
+/* grid */
+.container {
+  @apply max-w-325 w-full p-0 my-0 mx-auto;
+}
+
+.btn {
+  @apply inline-block py-2.5 px-3.75 bg-transparent rounded-[50px] border border-transparent text-[20px] text-center;
+  @apply duration-500 ease-in-out;
+}
+.btn.bg--primary {
+  @apply bg-primary text-light;
+}
+.btn.menu:hover {
+  @apply bg-dark text-primary;
+}
+
+/* header */
+.header {
+  @apply shadow-header fixed w-full top-0 left-0 p-3.75 bg-light z-999;
+}
+.header .header__wrapper {
+  @apply flex items-center justify-between;
+}
+.header .branding h3 {
+  @apply hidden;
+}
+
+/* header nav */
+.header .header__nav {
+  @apply bg-dark absolute -right-250 h-calc top-25 w-full;
+  @apply duration-[0.25s] ease-in-out;
+}
+
+/* header nav open */
+.header .header__nav.open {
+  @apply right-0;
+  @apply duration-500 ease-in-out;
+}
+
+/* ul and li */
+.header .header__nav ul {
+  @apply text-center flex flex-col gap-7.5 pt-25;
+}
+.header .header__nav ul li a {
+  @apply text-[15px] text-light;
+  @apply duration-[0.25s] ease-in-out;
+}
+.header .header__nav ul li .home__menu {
+  @apply hidden;
+}
+
+/* a hover style */
+.header .header__nav ul li a:hover {
+  @apply text-primary;
+}
+.header .header__nav ul li a:hover i {
+  /* add transition */
+  @apply text-primary;
+}
+
+/* icons/arrows */
+.header .header__nav ul li a .arrows {
+  @apply hidden;
+}
+.header .header__nav ul li a i {
+  @apply hidden;
+}
+
+/* burger */
+.header .burgir {
+  @apply p-2 bg-primary rounded-[5px] cursor-pointer;
+  @apply duration-500 ease-in-out;
+}
+.header .burgir span {
+  @apply w-6.25 h-1 bg-light block rounded-[50px];
+  @apply duration-500 ease-in-out;
+}
+.header .burgir span:nth-child(2) {
+  @apply my-1.25;
+}
+.header .burgir.open {
+  @apply bg-transparent;
+}
+.header .burgir.open span {
+  @apply w-5 h-0.75 bg-dark;
+}
+.header .burgir.open span:first-child {
+  @apply transform-(--transform-first-x);
+}
+.header .burgir.open span:last-child {
+  @apply transform-(--transform-last-x);
+}
+.header .burgir.open span:nth-child(2) {
+  @apply opacity-0;
+}
+
+.banner {
+  @apply p-0 pt-25;
+}
+.banner .container {
+  @apply bg-[url(/img/banner.webp)] h-125 bg-cover bg-no-repeat bg-center flex items-center p-2.5;
+}
+.banner .container img {
+  @apply w-75;
+}
+
+/* text */
+.banner .banner__text {
+  @apply flex flex-col w-fit max-w-75 text-light p-0;
+}
+.banner .banner__text h2 {
+  @apply text-[50px] tracking-[10px] font-[450];
+}
+
+.banner .banner__text p,
+.banner .banner__text a {
+  @apply font-default leading-normal;
+}
+.banner .banner__text a {
+  @apply w-45 font-default text-[14px] tracking-[2px] mt-5;
+}
+.banner .banner__text a:hover {
+  @apply text-primary bg-light;
+}
+
+/* menu */
+.menu__summary .container {
+  @apply p-0;
+}
+.menu__summary .menu__summary__card {
+  @apply flex flex-col justify-start py-6.25 px-0;
+}
+.menu__summary .menu__summary__card img {
+  @apply p-5 block w-full;
+}
+/* menu card text */
+.menu__summary .menu__summary__card .card__text {
+  @apply flex flex-col gap-7.5;
+}
+/* menu price */
+.menu__summary .menu__summary__card .card__text .price {
+  @apply flex items-end;
+}
+.menu__summary .menu__summary__card .card__text .price h3 {
+  @apply font-[380] tracking-[2px];
+}
+.menu__summary .menu__summary__card .card__text .price .yellow,
+.menu__summary .menu__summary__card .card__text .price h1 {
+  @apply text-primary font-normal;
+}
+.menu__summary .menu__summary__card .card__text .price h1 {
+  @apply text-[40px] m-0 ml-1.5 translate-y-1.75;
+}
+/* menu name */
+.menu__summary .menu__summary__card .card__text .food-name {
+  @apply flex flex-col gap-0.75;
+}
+.menu__summary .menu__summary__card .card__text .food-name h2,
+.menu__summary .menu__summary__card .card__text .food-name h1 {
+  @apply font-normal text-[35px] p-0 leading-none;
+}
+.menu__summary .menu__summary__card .card__text .food-name h1 {
+  @apply text-[50px] font-[450];
+}
+/* bottom p */
+.menu__summary .menu__summary__card .card__text p {
+  @apply font-default tracking-[2px] text-mid;
+}
+/* + button */
+.menu__summary .menu__summary__card .card__text a {
+  @apply inline-block text-center text-[30px] p-0 w-12.5 h-12.5;
+}
+.menu__summary .menu__summary__card .card__text a:hover {
+  @apply scale-[1.05] rotate-360 duration-1000 ease-[cubic-bezier(0.165,0.84,0.44,1)];
+}
+
+/* promos */
+.promos .container {
+  @apply py-2.5;
+}
+.promos .promos__wrapper {
+  @apply grid grid-cols-[1fr] gap-2.5 grid-rows-(--grid-promo-columns);
+}
+.promos .promos__wrapper .offer {
+  @apply w-full flex flex-col place-content-center bg-cover text-center;
+}
+.promos .promos__wrapper .offer:not(:first-child) .text {
+  @apply relative top-[15vh] flex flex-col items-center;
+}
+.promos .promos__wrapper .offer:not(:first-child) .text img {
+  @apply w-fit;
+}
+.promos .promos__wrapper .offer:first-child {
+  @apply bg-[url(/img/offers1.png)];
+}
+
+.promos .promos__wrapper .offer h3,
+.promos .promos__wrapper .offer h2,
+.promos .promos__wrapper .offer h1,
+.promos .promos__wrapper .offer p {
+  @apply font-normal leading-none;
+}
+.promos .promos__wrapper .offer h2 {
+  @apply text-[40px] tracking-[5px];
+}
+.promos .promos__wrapper .offer h1 {
+  @apply text-[65px] my-1.25;
+}
+.promos .promos__wrapper .offer p {
+  @apply text-mid font-default mt-6.25 tracking-[1px];
+}
+
+.promos .promos__wrapper .offer:nth-child(2) {
+  @apply bg-[url(/img/offers2.png)];
+}
+.promos .promos__wrapper .offer:nth-child(2) .text {
+  @apply relative top-[15vh];
+}
+.promos .promos__wrapper .offer:nth-child(2) .inner__text {
+  @apply relative bottom-6.25 flex flex-col gap-2.5;
+}
+
+.promos .promos__wrapper .offer:last-child {
+  @apply bg-[url(/img/offers3.png)];
+}
+.promos .promos__wrapper .offer:last-child .text {
+  @apply relative bottom-[15vh] top-auto;
+}
+.promos .promos__wrapper .offer:last-child h2 {
+  @apply relative bottom-5 left-5 text-[30px];
+}
+
+/* menu tabs */
+.menu__tabs ul {
+  @apply flex gap-10 justify-center p-5;
+}
+.menu__tabs ul .tab__nav__link {
+  @apply flex flex-col gap-2.5 text-center min-w-32.5 p-2.5 border-b-[3px] border-[#00000008] cursor-pointer text-[25px] tracking-[2px];
+  @apply duration-[0.25s] ease-in-out;
+}
+.menu__tabs ul .tab__nav__link img {
+  @apply my-0 mx-auto max-w-12.5;
+}
+.menu__tabs ul .tab__nav__link.active {
+  @apply border-primary;
+}
+.menu__tabs ul .tab__nav__link.active span {
+  @apply text-primary;
+  @apply transition-[border-bottom] duration-[0.25s] ease-in-out;
+}
+.menu__tabs ul .tab__nav__link:hover span {
+  @apply text-primary;
+  @apply duration-500 ease-in-out;
+}
+
+/* menu content */
+.menu__content {
+  @apply block;
+}
+.menu__content .menu__content__item {
+  @apply bg-light hidden gap-7.5;
+  @apply flex flex-col w-0 absolute delay-500 ease-in-out scale-0 transition-discrete;
+}
+.menu__content .menu__content__item .menu__item {
+  @apply bg-light pt-12.5 px-10 border border-[#00000025] rounded-[2.5px] flex flex-col;
+  @apply transform-[rotateY(90deg)] scale-[1.1] opacity-[0.25];
+  @apply duration-500 ease-in-out;
+}
+.menu__content .menu__content__item .menu__item .img-food {
+  @apply flex justify-center w-full h-full pb-6;
+}
+.menu__content .menu__content__item .menu__item .img-food img {
+  @apply max-w-50;
+}
+.menu__content .menu__content__item .menu__item .name-food {
+  @apply inline-block;
+  @apply duration-500 ease-in-out;
+}
+.menu__content .menu__content__item .menu__item .name-food h4 {
+  @apply text-[20px] tracking-[1px];
+}
+.menu__content .menu__content__item .menu__item .name-food:hover {
+  @apply text-primary;
+}
+
+.menu__content .menu__content__item .menu__item__text {
+  @apply flex flex-col gap-2.5 relative bottom-12.5;
+}
+.menu__content .menu__content__item .menu__item__text h3 {
+  @apply text-[28px] text-primary tracking-[1px];
+}
+.menu__content .menu__content__item .menu__item__text a.btn {
+  @apply w-fit font-default py-2 px-7.5 flex place-content-center text-[15px] gap-2.5 text-center tracking-[1px];
+}
+.menu__content .menu__content__item .menu__item__text a.btn i {
+  @apply inline-block place-content-center;
+}
+
+.menu__content .menu__content__item .menu__item__text p {
+  @apply text-[13px] font-default text-mid tracking-[1px];
+}
+
+.menu__content .menu__content__item.active {
+  @apply flex flex-col py-5 px-12.5;
+  @apply items-center w-full static transition-discrete overflow-hidden scale-100;
+}
+.menu__content .menu__content__item.active .menu__item {
+  @apply overflow-hidden scale-100 opacity-100 transform-[unset];
+  @apply duration-500 delay-500 ease-in-out;
+}
+
+/* order */
+.order {
+  @apply py-7.5;
+}
+.order .container {
+  @apply p-5;
+}
+.order .order__wrapper {
+  @apply flex flex-col gap-5 justify-center;
+}
+.order .order__wrapper .curly-line {
+  @apply hidden;
+}
+.order .order__step__card {
+  @apply bg-midLight flex flex-col place-content-center text-center;
+}
+.order .order__step__card:last-of-type .choose__img {
+  @apply p-0;
+}
+.order .order__step__card img {
+  @apply block justify-center m-0 pt-10 w-full;
+}
+.order .order__step__card .info {
+  @apply p-7.5 flex flex-col gap-2.5;
+}
+
+.order .order__step__card .info .title__tab {
+  @apply flex flex-col gap-2.5;
+}
+.order .order__step__card .info .title__tab img {
+  @apply my-0 mx-auto  object-contain max-w-17.5 p-0;
+}
+.order .order__step__card .info .title__tab h2 {
+  @apply text-[35px] tracking-[3px] leading-none place-content-center;
+}
+.order .order__step__card .info p {
+  @apply font-default tracking-[2px] text-mid;
+}
+
+.scroll {
+  @apply h-12.5 w-12.5 text-[25px] p-0 place-content-center text-center fixed right-7.5 bottom-7.5 scale-0 opacity-0;
+  @apply transition-(--transition-simple);
+}
+.scroll:hover {
+  @apply bg-dark text-primary;
+}
+.scroll i {
+  @apply inline-block place-content-center text-center;
+}
+.scroll.active {
+  @apply inline-block scale-100 opacity-100;
+}
